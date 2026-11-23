@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 
 export default function Footer() {
@@ -5,11 +6,9 @@ export default function Footer() {
         <footer className="border-t border-white/10 bg-[#0a0a08]">
             <div className="mx-auto max-w-[1500px] px-5 py-16 md:px-10 md:py-20">
                 <div className="grid gap-12 md:grid-cols-12">
-                    <div className="md:col-span-5">
-                        <p className="font-display text-3xl uppercase tracking-[0.16em]">
-                            Swagat <span className="text-white/55">at Rada</span>
-                        </p>
-                        <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/55">
+                    <div className="md:col-span-5 flex flex-col">
+                        <Image src="/swagat-logo.png" alt="Swagat at Rada logo" width={130} height={130} className="pt-4" />
+                        <p className="w-auto text-sm leading-relaxed text-white/55">
                             Indian kitchen and dining room in Legazpi Village. Classic spices, modern technique,
                             and a table kept warm until eleven.
                         </p>
