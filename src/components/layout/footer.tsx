@@ -1,57 +1,102 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
+const mapsUrl =
+  "https://www.google.com/maps/search/?api=1&query=Swagat+at+Rada+105+Rada+Street+Legazpi+Village+Makati+City";
+
+const labelClass =
+  "text-xs font-semibold uppercase tracking-[0.2em] text-[#ff9900]";
+const linkClass =
+  "inline-flex items-center gap-1.5 underline decoration-[#f3e8d6]/30 underline-offset-4 transition-colors hover:text-[#ff9900] hover:decoration-[#ff9900]";
+
 export default function Footer() {
-    return (
-        <footer className="border-t border-white/10 bg-[#0a0a08]">
-            <div className="mx-auto max-w-[1500px] px-5 py-16 md:px-10 md:py-20">
-                <div className="grid gap-12 md:grid-cols-12">
-                    <div className="md:col-span-5 flex flex-col">
-                        <Image src="/swagat-logo.png" alt="Swagat at Rada logo" width={130} height={130} className="pt-4" />
-                        <p className="w-auto text-sm leading-relaxed text-white/55">
-                            Indian kitchen and dining room in Legazpi Village. Classic spices, modern technique,
-                            and a table kept warm until eleven.
-                        </p>
-                    </div>
-                    <div className="md:col-span-3">
-                        <p className="label">Visit</p>
-                        <p className="mt-4 text-sm leading-relaxed">
-                            105 Rada Street, Legazpi Village
-                            <br />
-                            Makati City, Metro Manila 1223
-                        </p>
-                        <a
-                            href="https://www.google.com/maps/search/?api=1&query=Swagat+at+Rada+105+Rada+Street+Legazpi+Village+Makati+City"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="mt-4 inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.26em] text-[#ff9900]"
-                        >
-                            Directions <ArrowUpRight className="h-3 w-3" />
-                        </a>
-                    </div>
-                    <div className="md:col-span-2">
-                        <p className="label">Hours</p>
-                        <p className="mt-4 text-sm leading-relaxed">
-                            Monday — Sunday
-                            <br />
-                            11:00 — 23:00
-                        </p>
-                    </div>
-                    <div className="md:col-span-2">
-                        <p className="label">Contact</p>
-                        <a href="tel:+639670849492" className="mt-4 block text-sm hover:text-[#ff9900]">
-                            +63 967 084 9492
-                        </a>
-                        <a href="/menu" className="mt-3 block text-sm hover:text-[#ff9900]">
-                            The menu
-                        </a>
-                    </div>
-                </div>
-                <div className="mt-14 flex flex-col gap-2 border-t border-white/10 pt-6 text-[10px] uppercase tracking-[0.24em] text-white/45 sm:flex-row sm:items-center sm:justify-between">
-                    <p>© 2026 Swagat at Rada</p>
-                    <p>Makati City · Philippines</p>
-                </div>
-            </div>
-        </footer>
-    );
+  return (
+    <footer className="bg-[#3a1812] text-[#f3e8d6]">
+      <div className="mx-auto max-w-[1500px] px-5 pt-14 md:px-10 md:pt-16">
+        {/* Details */}
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <Image
+              src="/swagat-logo.png"
+              alt="Swagat at Rada logo"
+              width={96}
+              height={96}
+            />
+            <p className="mt-5 max-w-xs text-base leading-relaxed text-[#f3e8d6]/70">
+              Indian kitchen and dining room in Legazpi Village. Classic spices,
+              modern technique.
+            </p>
+          </div>
+
+          <div>
+            <p className={labelClass}>Visit</p>
+            <p className="mt-4 text-lg leading-snug">
+              105 Rada Street, Legazpi Village
+              <br />
+              Makati City, Metro Manila 1223
+            </p>
+            <a
+              href={mapsUrl}
+              target="_blank"
+              rel="noreferrer"
+              className={`${linkClass} mt-4 text-base`}
+            >
+              Get directions <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
+
+          <div>
+            <p className={labelClass}>Open daily</p>
+            <p className="mt-4 text-lg leading-snug">
+              11:00 AM — 11:00 PM
+              <br />
+              <span className="text-[#f3e8d6]/70">
+                Kitchen closes at 10:30 PM
+              </span>
+            </p>
+          </div>
+
+          <div>
+            <p className={labelClass}>Reservations</p>
+            <a href="tel:+639670849492" className={`${linkClass} mt-4 text-lg`}>
+              +63 967 084 9492
+            </a>
+            <p className="mt-2 text-base text-[#f3e8d6]/70">
+              Recommended after 7:00 PM
+            </p>
+          </div>
+        </div>
+
+        {/* Welcome + CTA */}
+        <div className="mt-12 flex flex-col gap-5 border-t border-[#f3e8d6]/15 pt-8 sm:flex-row sm:items-center sm:justify-between">
+          <p className="font-display text-2xl font-light uppercase tracking-[0.02em] md:text-3xl">
+            Swagat means <span className="italic text-[#ff9900]">welcome.</span>
+          </p>
+
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <Link
+              href="/reservation"
+              className="group inline-flex h-11 items-center justify-center gap-2 bg-[#ff9900] px-6 text-xs font-medium uppercase tracking-[0.2em] text-[#2a0f0a] transition-colors hover:bg-[#f3e8d6]"
+            >
+              Reserve a table
+              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </Link>
+            <Link
+              href="/menu"
+              className="inline-flex h-11 items-center justify-center border border-[#f3e8d6]/30 px-6 text-xs font-medium uppercase tracking-[0.2em] transition-colors hover:border-[#ff9900] hover:text-[#ff9900]"
+            >
+              See the menu
+            </Link>
+          </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div className="mt-8 flex flex-col gap-2 border-t border-[#f3e8d6]/15 py-6 text-sm text-[#f3e8d6]/60 sm:flex-row sm:items-center sm:justify-between">
+          <p>© 2026 Swagat at Rada</p>
+          <p>Legazpi Village · Makati City</p>
+        </div>
+      </div>
+    </footer>
+  );
 }

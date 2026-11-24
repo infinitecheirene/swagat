@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "../components/layout/navbar";
 import Footer from "../components/layout/footer";
 import PwaRegister from "../components/pwa-register";
+import SplashScreen from "../components/layout/splash-screen";
 import { CartProvider } from "../components/cart-provider";
 
 import { Lora, Karla } from "next/font/google";
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${lora.variable} ${karla.variable} h-full scroll-smooth antialiased`}
     >
       <body className="min-h-full bg-[#0D0D0B] font-(family-name:--font-karla) text-white">
+        <SplashScreen />
         <CartProvider>
           <PwaRegister />
           <Navbar />
