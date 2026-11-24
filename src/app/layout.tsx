@@ -4,6 +4,7 @@ import Navbar from "../components/layout/navbar";
 import Footer from "../components/layout/footer";
 import PwaRegister from "../components/pwa-register";
 import SplashScreen from "../components/layout/splash-screen";
+import FloatingSocials from "../components/layout/floating-socials";
 import { CartProvider } from "../components/cart-provider";
 
 import { Lora, Karla } from "next/font/google";
@@ -55,6 +56,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Navbar />
           {children}
           <Footer />
+          <FloatingSocials />
         </CartProvider>
       </body>
     </html>
