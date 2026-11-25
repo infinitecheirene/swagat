@@ -50,7 +50,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${lora.variable} ${karla.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="min-h-full bg-[#0D0D0B] font-(family-name:--font-karla) text-white">
+      <body className="min-h-full bg-[#370A06] font-(family-name:--font-karla) text-white">
         <SplashScreen />
         <CartProvider>
           <PwaRegister />

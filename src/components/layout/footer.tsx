@@ -12,7 +12,7 @@ const linkClass =
 
 export default function Footer() {
   return (
-    <footer className="bg-[#3a1812] text-[#f3e8d6]">
+    <footer className="bg-[#250604] text-[#f3e8d6]">
       <div className="mx-auto max-w-[1500px] px-5 pt-14 md:px-10 md:pt-16">
         {/* Details */}
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">

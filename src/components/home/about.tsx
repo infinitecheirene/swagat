@@ -16,7 +16,7 @@ const highlights = [
 export default function About() {
   return (
     <section className="scroll-mt-24">
-      <div className="mx-auto max-w-[1500px] px-5 py-16 sm:py-24 md:px-10 md:py-32">
+      <div className="mx-auto max-w-[1500px] py-24 px-10">
         <div className="flex flex-col gap-6 md:col-span-7">
           <p className="font-display text-[clamp(1.7rem,3.4vw,3.05rem)] font-light leading-[1.16]">
             At Swagat at Rada, classic Indian spices meet modern technique —

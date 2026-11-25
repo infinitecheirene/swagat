@@ -70,7 +70,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#0d0d0b]/80 backdrop-blur-md">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#250604]/80 backdrop-blur-sm scroll:opacity-20 transition-opacity duration-300">
       <div className="mx-auto grid h-20 max-w-[1500px] grid-cols-[auto_1fr] items-center px-5 md:grid-cols-[1fr_auto_1fr] md:px-10">
         {/* Logo */}
         <Link
@@ -168,7 +168,7 @@ export default function Navbar() {
 
       {/* Mobile panel */}
       <nav
-        className={`overflow-hidden border-t border-white/10 bg-[#0d0d0b] transition-[max-height,opacity] duration-300 ease-out md:hidden ${
+        className={`overflow-hidden border-t border-white/10 bg-[#250604] transition-[max-height,opacity] duration-300 ease-out md:hidden ${
           open
             ? "max-h-[520px] opacity-100"
             : "pointer-events-none max-h-0 opacity-0"

@@ -11,7 +11,7 @@ export default function ReservationSection() {
           <div className="md:col-span-7">
             <div className="relative overflow-hidden">
               <Image
-                src="/dining-room.png"
+                src="/booth-2.jpg"
                 alt="Swagat dining room"
                 width={1200}
                 height={900}

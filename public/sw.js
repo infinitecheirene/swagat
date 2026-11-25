@@ -1,4 +1,4 @@
-const CACHE_NAME = "swagat-v1";
+const CACHE_NAME = "swagat-v2";
 const APP_SHELL = [
   "/",
   "/menu",
@@ -32,21 +32,48 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
-  if (event.request.method !== "GET") return;
+  const request = event.request;
+  if (request.method !== "GET") return;
+
+  const url = new URL(request.url);
+  if (
+    url.origin !== self.location.origin ||
+    url.pathname.startsWith("/_next/") ||
+    url.searchParams.has("_rsc") ||
+    request.headers.has("RSC") ||
+    request.headers.has("Next-Router-Prefetch") ||
+    request.headers.has("Next-Router-State-Tree") ||
+    request.headers.get("Accept")?.includes("text/x-component")
+  ) {
+    return;
+  }
+
+  const networkResponse = fetch(request);
 
   event.respondWith(
-    caches.match(event.request).then((cached) => {
-      const network = fetch(event.request)
-        .then((response) => {
-          if (response.ok) {
-            const copy = response.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+    networkResponse.then(
+      async (response) => {
+        if (response.ok && response.type === "basic") {
+          try {
+            const cache = await caches.open(CACHE_NAME);
+            await cache.put(request, response.clone());
+          } catch (error) {
+            console.warn("Service worker cache update failed", error);
           }
-          return response;
-        })
-        .catch(() => cached);
+        }
+        return response;
+      },
+      async (error) => {
+        const cached = await caches.match(request);
+        if (cached) return cached;
 
-      return cached || network;
-    })
+        if (request.mode === "navigate") {
+          const fallback = await caches.match("/");
+          if (fallback) return fallback;
+        }
+
+        throw error;
+      }
+    )
   );
 });
